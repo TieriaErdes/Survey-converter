@@ -1,0 +1,11 @@
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\FileGenerationMechanism.deps.json
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\FileGenerationMechanism.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\FileGenerationMechanism.pdb
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.GeneratedMSBuildEditorConfig.editorconfig
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.AssemblyInfoInputs.cache
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.AssemblyInfo.cs
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.csproj.CoreCompileInputs.cache
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\refint\FileGenerationMechanism.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.pdb
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\ref\FileGenerationMechanism.dll

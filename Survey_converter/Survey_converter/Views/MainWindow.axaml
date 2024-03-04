@@ -3,7 +3,8 @@
         xmlns:vm="using:Survey_converter.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="500"
+		Width="1000" Height="500"
         x:Class="Survey_converter.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -15,6 +16,66 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+	<Window.Styles>
+
+		<!--Flyout styles-->
+		<Style Selector="FlyoutPresenter.SignalsNames">
+			<Setter Property="Background" Value="{DynamicResource FlyoutBackgroundColor}"/>
+			<Setter Property="BorderBrush" Value="Black"/>
+			<Setter Property="BorderThickness" Value="1"/>
+		</Style>
+
+		<StyleInclude Source="/Styles/StyledButton.axaml"/>
+		<StyleInclude Source="/Styles/StyledLabel.axaml"/>
+
+	</Window.Styles>
+
+	
+	<Border Background="{DynamicResource ResourceKey=MainBackgroundColor}" 
+			BorderThickness="2" BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}" CornerRadius="3">
+		<Grid ShowGridLines="False" RowDefinitions=" Auto, *">
+			
+			<!-- func buttons-->
+			<Border Grid.Row="0" BorderThickness="0, 0, 0, 2" BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
+				<Grid ShowGridLines="False" ColumnDefinitions="Auto, *, Auto">
+					<Button Grid.Column="0" Content="File"/>
+
+					<Label Grid.Column="1" Content="Survey Converter" HorizontalContentAlignment="Center"/>
+					
+					<Button Grid.Column="2" Content="Settings"/>
+				</Grid>
+			</Border>
+			
+			<!-- main grid-->
+			<Border Grid.Row="1">
+				<Grid ShowGridLines="True" ColumnDefinitions="Auto, *">
+					
+					<!-- Type selector-->
+					<Border Grid.Column="0" BorderThickness="0, 0, 4, 4" BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
+						<Grid ShowGridLines="True" RowDefinitions="Auto, Auto">
+							<Label Grid.Row="0" Content="Select the desired conversion format:"/>
+
+							<Grid Grid.Row="1" ColumnDefinitions="Auto, Auto">
+								<Button Grid.Column="0" Content="To CSV" Margin="10, 4, 5, 0"/>
+								<Button Grid.Column="1" Content="To EDF"/>
+							</Grid>
+						</Grid>
+					</Border>
+
+					<Border Grid.Column="1">
+						<Grid RowDefinitions="Auto, Auto">
+							<Label Grid.Row="0" Content="Information about signals: " Margin="4, 0, 0, 0"/>
+							<ListBox Grid.Row="1" 
+									 Background="{DynamicResource ResourceKey=MainBackgroundColor}"
+									 SelectionMode="Multiple">
+									<!-- TODO: -->
+							</ListBox>
+						</Grid>
+					</Border>
+				</Grid>
+			</Border>
+		</Grid>
+	</Border>
 
 </Window>

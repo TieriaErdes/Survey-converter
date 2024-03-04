@@ -12,4 +12,19 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+
+	
+	<Application.Resources>
+		
+		<!-- 022677-->
+		<SolidColorBrush Color="#330278" x:Key="MainBackgroundColor"/>
+		
+		<SolidColorBrush Color="#0C0379" x:Key="SecondaryBackgroundColor"/>
+		
+		<SolidColorBrush Color="#620176" x:Key="AcsentColor"/>
+		
+		<SolidColorBrush Color="#DEDCD0" x:Key="TextColor"/>
+	</Application.Resources>
+	
+	
 </Application>
