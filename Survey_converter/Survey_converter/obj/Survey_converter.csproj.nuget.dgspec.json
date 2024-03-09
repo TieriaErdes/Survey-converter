@@ -68,6 +68,14 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.2.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0-preview.1.24080.9, )"
+            },
+            "Resx": {
+              "target": "Package",
+              "version": "[0.2.1, )"
             }
           },
           "imports": [

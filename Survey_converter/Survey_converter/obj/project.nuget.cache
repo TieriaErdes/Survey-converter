@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TBcUuUoK1m2qHyPSaLVgZYCPm7gUMAhnnoPKvblhVkHm7wxY6cz9Ji6pQrzhKidUSsLkuwORXyFloT4cL1Vjkw==",
+  "dgSpecHash": "piqMufzaDusdlQnqD9iSmG+PXrUemsP1dgkqQXP9XYAdok84RYRQ8SCVdRp1vdFMXKGAazwJ+g2Q7qQSf1R0wA==",
   "success": true,
   "projectFilePath": "C:\\Avalonia\\Survey converter\\Survey_converter\\Survey_converter\\Survey_converter.csproj",
   "expectedPackageFiles": [
@@ -33,9 +33,12 @@
     "C:\\Users\\User\\.nuget\\packages\\microsoft.codeanalysis.csharp.scripting\\3.8.0\\microsoft.codeanalysis.csharp.scripting.3.8.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.codeanalysis.scripting.common\\3.8.0\\microsoft.codeanalysis.scripting.common.3.8.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.0-preview.1.24080.9\\microsoft.extensions.dependencyinjection.9.0.0-preview.1.24080.9.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0-preview.1.24080.9\\microsoft.extensions.dependencyinjection.abstractions.9.0.0-preview.1.24080.9.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\resx\\0.2.1\\resx.0.2.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\skiasharp\\2.88.3\\skiasharp.2.88.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\skiasharp.nativeassets.linux\\2.88.3\\skiasharp.nativeassets.linux.2.88.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.3\\skiasharp.nativeassets.macos.2.88.3.nupkg.sha512",

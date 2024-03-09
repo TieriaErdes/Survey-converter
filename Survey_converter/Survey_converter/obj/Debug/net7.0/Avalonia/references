@@ -29,6 +29,8 @@ C:\Users\User\.nuget\packages\microsoft.codeanalysis.csharp.scripting\3.8.0\lib\
 C:\Users\User\.nuget\packages\microsoft.codeanalysis.common\3.8.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.dll
 C:\Users\User\.nuget\packages\microsoft.codeanalysis.scripting.common\3.8.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.Scripting.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\Microsoft.CSharp.dll
+C:\Users\User\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\9.0.0-preview.1.24080.9\lib\netstandard2.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\.nuget\packages\microsoft.extensions.dependencyinjection\9.0.0-preview.1.24080.9\lib\netstandard2.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\Microsoft.VisualBasic.Core.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\Microsoft.VisualBasic.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\Microsoft.Win32.Primitives.dll
@@ -36,6 +38,7 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\Micros
 C:\Users\User\.nuget\packages\microsoft.win32.systemevents\6.0.0\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\mscorlib.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\netstandard.dll
+C:\Users\User\.nuget\packages\resx\0.2.1\lib\netstandard2.0\Resx.dll
 C:\Users\User\.nuget\packages\skiasharp\2.88.3\lib\net6.0\SkiaSharp.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\System.AppContext.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\7.0.12\ref\net7.0\System.Buffers.dll

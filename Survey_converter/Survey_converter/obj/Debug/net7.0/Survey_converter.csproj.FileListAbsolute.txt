@@ -130,3 +130,14 @@ C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Survey_converter.csproj.CopyComplete
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Survey_converter.genruntimeconfig.cache
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\ref\Survey_converter.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Resx.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\en\Survey_converter.resources.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\ru-RU\Survey_converter.resources.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Survey_converter.Languages.Resources.resources
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Survey_converter.Languages.Resources.en.resources
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Survey_converter.Languages.Resources.ru-RU.resources
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Survey_converter.csproj.GenerateResource.cache
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\en\Survey_converter.resources.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\ru-RU\Survey_converter.resources.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll

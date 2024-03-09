@@ -3,6 +3,7 @@
         xmlns:vm="using:Survey_converter.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:lang="clr-namespace:Survey_converter.Languages"
         mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="500"
 		Width="1000" Height="500"
         x:Class="Survey_converter.Views.MainWindow"
@@ -19,13 +20,6 @@
 
 	<Window.Styles>
 
-		<!--Flyout styles-->
-		<Style Selector="FlyoutPresenter.SignalsNames">
-			<Setter Property="Background" Value="{DynamicResource FlyoutBackgroundColor}"/>
-			<Setter Property="BorderBrush" Value="Black"/>
-			<Setter Property="BorderThickness" Value="1"/>
-		</Style>
-
 		<StyleInclude Source="/Styles/StyledButton.axaml"/>
 		<StyleInclude Source="/Styles/StyledLabel.axaml"/>
 
@@ -39,9 +33,9 @@
 			<!-- func buttons-->
 			<Border Grid.Row="0" BorderThickness="0, 0, 0, 2" BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
 				<Grid ShowGridLines="False" ColumnDefinitions="Auto, *, Auto">
-					<Button Grid.Column="0" Content="File"/>
+					<Button Grid.Column="0" Content="File" Command="{Binding OpenFileFolderAsync}"/>
 
-					<Label Grid.Column="1" Content="Survey Converter" HorizontalContentAlignment="Center"/>
+					<Label Grid.Column="1" Content="{x:Static lang:Resources.Title}" HorizontalContentAlignment="Center"/>
 					
 					<Button Grid.Column="2" Content="Settings"/>
 				</Grid>
@@ -54,23 +48,39 @@
 					<!-- Type selector-->
 					<Border Grid.Column="0" BorderThickness="0, 0, 4, 4" BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
 						<Grid ShowGridLines="True" RowDefinitions="Auto, Auto">
-							<Label Grid.Row="0" Content="Select the desired conversion format:"/>
+							<Label Grid.Row="0" Content="{x:Static lang:Resources.SelectFormatText}"/>
 
 							<Grid Grid.Row="1" ColumnDefinitions="Auto, Auto">
-								<Button Grid.Column="0" Content="To CSV" Margin="10, 4, 5, 0"/>
-								<Button Grid.Column="1" Content="To EDF"/>
+								<Button Grid.Column="0" Content="{x:Static lang:Resources.ToCSV}" Margin="10, 4, 5, 0"/>
+								<Button Grid.Column="1" Content="{x:Static lang:Resources.ToEDF}"/>
 							</Grid>
 						</Grid>
 					</Border>
-
+					
+					<!-- Information about signals -->
 					<Border Grid.Column="1">
-						<Grid RowDefinitions="Auto, Auto">
-							<Label Grid.Row="0" Content="Information about signals: " Margin="4, 0, 0, 0"/>
+						<Grid RowDefinitions="Auto, Auto, *">
+							<Label Grid.Row="0" Content="{x:Static lang:Resources.InformationAboutSignalsText}" Margin="4, 0, 0, 0" 
+								   BorderBrush="{DynamicResource SecondaryBackgroundColor}" BorderThickness="0, 0, 0, 4"/>
+							
+							<!-- List box-->
 							<ListBox Grid.Row="1" 
+									 x:Name="ListOfSignals"
 									 Background="{DynamicResource ResourceKey=MainBackgroundColor}"
-									 SelectionMode="Multiple">
-									<!-- TODO: -->
+									 ItemsSource="{Binding ChannelNames}"
+									 SelectionMode="Toggle, Multiple">
+								 <ListBox.ItemTemplate>
+									 <DataTemplate>
+										<Border BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
+											<Label Content="{Binding}"/>
+										</Border>
+									 </DataTemplate>
+								</ListBox.ItemTemplate>
 							</ListBox>
+							
+							<!-- Error messages-->
+							<ListBox Grid.Column="2" DockPanel.Dock="Bottom" ItemsSource="{Binding ErrorMessages}" 
+									 Background="Transparent" Foreground="{DynamicResource TextColor}"/>
 						</Grid>
 					</Border>
 				</Grid>
