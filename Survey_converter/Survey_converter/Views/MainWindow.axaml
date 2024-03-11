@@ -51,7 +51,7 @@
 							<Label Grid.Row="0" Content="{x:Static lang:Resources.SelectFormatText}"/>
 
 							<Grid Grid.Row="1" ColumnDefinitions="Auto, Auto">
-								<Button Grid.Column="0" Content="{x:Static lang:Resources.ToCSV}" Margin="10, 4, 5, 0"/>
+								<Button Grid.Column="0" Content="{x:Static lang:Resources.ToCSV}" Command="{Binding ToCSVCommand}" Margin="10, 4, 5, 0"/>
 								<Button Grid.Column="1" Content="{x:Static lang:Resources.ToEDF}"/>
 							</Grid>
 						</Grid>
@@ -68,10 +68,12 @@
 									 x:Name="ListOfSignals"
 									 Background="{DynamicResource ResourceKey=MainBackgroundColor}"
 									 ItemsSource="{Binding ChannelNames}"
+									 SelectionChanged="ListBox_SelectionChanged"
 									 SelectionMode="Toggle, Multiple">
 								 <ListBox.ItemTemplate>
 									 <DataTemplate>
-										<Border BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
+										<Border Padding="8"
+												BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}" BorderThickness="3" CornerRadius="8">
 											<Label Content="{Binding}"/>
 										</Border>
 									 </DataTemplate>

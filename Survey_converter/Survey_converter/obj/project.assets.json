@@ -1431,6 +1431,16 @@
         "runtime": {
           "lib/net6.0/Tmds.DBus.Protocol.dll": {}
         }
+      },
+      "FileGenerationMechanism/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/FileGenerationMechanism.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FileGenerationMechanism.dll": {}
+        }
       }
     }
   },
@@ -4637,6 +4647,11 @@
         "tmds.dbus.protocol.0.15.0.nupkg.sha512",
         "tmds.dbus.protocol.nuspec"
       ]
+    },
+    "FileGenerationMechanism/1.0.0": {
+      "type": "project",
+      "path": "../../FileGenerationMechanism/FileGenerationMechanism/FileGenerationMechanism.csproj",
+      "msbuildProject": "../../FileGenerationMechanism/FileGenerationMechanism/FileGenerationMechanism.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4647,6 +4662,7 @@
       "Avalonia.Fonts.Inter >= 11.0.2",
       "Avalonia.Themes.Fluent >= 11.0.2",
       "CommunityToolkit.Mvvm >= 8.2.1",
+      "FileGenerationMechanism >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 9.0.0-preview.1.24080.9",
       "Resx >= 0.2.1"
     ]
@@ -4683,7 +4699,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Avalonia\\Survey converter\\FileGenerationMechanism\\FileGenerationMechanism\\FileGenerationMechanism.csproj": {
+              "projectPath": "C:\\Avalonia\\Survey converter\\FileGenerationMechanism\\FileGenerationMechanism\\FileGenerationMechanism.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

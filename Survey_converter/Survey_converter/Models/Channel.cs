@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -21,8 +22,8 @@ namespace Survey_converter.Models
         [XmlArray(ElementName = "Channels", IsNullable = false)]
         public Channel[] Channels;
 
-        [XmlArrayItem(ElementName = "Channel", Type = typeof(Channel), IsNullable = true)]
-        public Channel[] ChannelsItems;
+        //[XmlArrayItem(ElementName = "Channel", Type = typeof(Channel), IsNullable = true)]
+        //public Channel[] ChannelsItems;
 
         public BOSMeth() { }
         public BOSMeth(Guid templateGuid, Channel[] channels)
@@ -32,24 +33,25 @@ namespace Survey_converter.Models
         }
     }
 
-    public sealed class Channel
+    [StructLayout(LayoutKind.Sequential)]
+    public class Channel
     {
         [XmlAttribute(AttributeName = "UnicNumber")]
-        public int UnicNumber;
+        public int UnicNumber { get; init; }
         [XmlAttribute(AttributeName = "SignalFileName")]
-        public string? SignalFileName;
+        public string? SignalFileName { get; init; }
         [XmlAttribute(AttributeName = "Type")]
-        public int Type;
+        public int Type { get; init; }
         [XmlAttribute(AttributeName = "EffectiveFd")]
-        public int EffectiveFd;
+        public int EffectiveFd { get; init; }
 
-        public Channel() { }
-        public Channel(int unicNumber, string signalFileName, int type, int effectiveFd)
-        {
-            UnicNumber = unicNumber;
-            SignalFileName = signalFileName;
-            Type = type;
-            EffectiveFd = effectiveFd;
-        }
+        //public Channel() { }
+        //public Channel(int unicNumber, string signalFileName, int type, int effectiveFd)
+        //{
+        //    UnicNumber = unicNumber;
+        //    SignalFileName = signalFileName;
+        //    Type = type;
+        //    EffectiveFd = effectiveFd;
+        //}
     }
 }

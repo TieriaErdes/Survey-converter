@@ -141,3 +141,5 @@ C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\ru-RU\Survey_converter.resources.dll
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\FileGenerationMechanism.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\FileGenerationMechanism.pdb

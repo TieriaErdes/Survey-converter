@@ -26,6 +26,11 @@
     <PackageReference Include="Resx" Version="0.2.1" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FileGenerationMechanism\FileGenerationMechanism\FileGenerationMechanism.csproj" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<EmbeddedResource Update="Languages\Resources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

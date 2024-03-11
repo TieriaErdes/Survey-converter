@@ -1,5 +1,4 @@
-﻿using Avalonia;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using Survey_converter.Services;
 using System.Collections.ObjectModel;
 using System.Threading.Channels;
@@ -8,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using Survey_converter.Models;
 using Avalonia.Platform.Storage;
+using FileGenerationMechanism.MechanismLogic;
 
 namespace Survey_converter.ViewModels
 {
@@ -32,6 +32,10 @@ namespace Survey_converter.ViewModels
         /// </summary>
         private SerializedChannel? _Channels;
 
+        /// <summary>
+        /// Структура данных, хранящая в себе информацию о выбранных сигналах
+        /// </summary>
+        private MechanismController.Channel[] selectedSignals;
 
 
         public MainWindowViewModel()
@@ -51,7 +55,7 @@ namespace Survey_converter.ViewModels
                 if (folder is null) return;
 
                 // класс десериализации MethDescroption.xml. Хранит в себе же все данные о сигналах 
-                _Channels = new SerializedChannel(folder.TryGetLocalPath());
+                _Channels = new SerializedChannel(folder.TryGetLocalPath()!);
                 if (_Channels is null) return;
 
                 ChannelNames = new ObservableCollection<string>();
@@ -65,5 +69,40 @@ namespace Survey_converter.ViewModels
                 ErrorMessages!.Add(ex.Message);
             }
         }
+
+        #region flags of the selected conversion
+        private const byte toCSV = 0;
+        private const byte toEDF = 1;
+        #endregion
+
+        [RelayCommand]
+        public void ToCSVCommand()
+        {
+            MechanismController mechanism = new MechanismController(toCSV, selectedSignals);
+        }
+
+        [RelayCommand]
+        public void ToEDFCommand()
+        {
+
+        }
+
+        public void Update_selectedSignalsNames(System.Collections.IList selectedItems, int itemsCount)
+        {
+            //Debug.WriteLine("Call successful");
+
+            selectedSignals = new MechanismController.Channel[itemsCount]; //new MechanismController.Channel[itemsCount];
+
+            foreach (var channel in _Channels!.bosMeth!.Channels)
+            {
+                for (int i = 0; i < itemsCount; i++)
+                {
+                    if (channel.SignalFileName!.Equals(selectedItems[i]!.ToString()))
+                         selectedSignals[i] = channel /*with { UnicNumber = channel.UnicNumber, SignalFileName = channel.SignalFileName, EffectiveFd = channel.EffectiveFd, Type = channel.Type }*/;
+                }
+            }
+        }
+
+        
     }
 }
