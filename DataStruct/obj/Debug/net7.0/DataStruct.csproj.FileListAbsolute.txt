@@ -1,0 +1,11 @@
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\DataStruct.GeneratedMSBuildEditorConfig.editorconfig
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\DataStruct.AssemblyInfoInputs.cache
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\DataStruct.AssemblyInfo.cs
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\DataStruct.csproj.CoreCompileInputs.cache
+C:\Avalonia\Survey converter\DataStruct\bin\Debug\net7.0\DataStruct.deps.json
+C:\Avalonia\Survey converter\DataStruct\bin\Debug\net7.0\DataStruct.dll
+C:\Avalonia\Survey converter\DataStruct\bin\Debug\net7.0\DataStruct.pdb
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\DataStruct.dll
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\refint\DataStruct.dll
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\DataStruct.pdb
+C:\Avalonia\Survey converter\DataStruct\obj\Debug\net7.0\ref\DataStruct.dll

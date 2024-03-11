@@ -10,4 +10,8 @@
     <Folder Include="MechanismRepozitory\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\DataStruct\DataStruct.csproj" />
+  </ItemGroup>
+
 </Project>

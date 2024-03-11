@@ -14,6 +14,7 @@
           "Avalonia.Fonts.Inter": "11.0.2",
           "Avalonia.Themes.Fluent": "11.0.2",
           "CommunityToolkit.Mvvm": "8.2.1",
+          "DataStruct": "1.0.0",
           "FileGenerationMechanism": "1.0.0",
           "Microsoft.Extensions.DependencyInjection": "9.0.0-preview.1.24080.9",
           "Resx": "0.2.1"
@@ -967,7 +968,15 @@
           }
         }
       },
+      "DataStruct/1.0.0": {
+        "runtime": {
+          "DataStruct.dll": {}
+        }
+      },
       "FileGenerationMechanism/1.0.0": {
+        "dependencies": {
+          "DataStruct": "1.0.0"
+        },
         "runtime": {
           "FileGenerationMechanism.dll": {}
         }
@@ -1497,6 +1506,11 @@
       "sha512": "sha512-QVo/Y39nTYcCKBqrZuwHjXdwaky0yTQPIT3qUTEEK2MZfDtZWrJ2XyZ59zH8LBgB2fL5cWaTuP2pBTpGz/GeDQ==",
       "path": "tmds.dbus.protocol/0.15.0",
       "hashPath": "tmds.dbus.protocol.0.15.0.nupkg.sha512"
+    },
+    "DataStruct/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "FileGenerationMechanism/1.0.0": {
       "type": "project",

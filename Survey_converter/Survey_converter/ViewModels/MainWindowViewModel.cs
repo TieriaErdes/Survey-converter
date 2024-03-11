@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Survey_converter.Models;
 using Avalonia.Platform.Storage;
 using FileGenerationMechanism.MechanismLogic;
+using DataStruct;
+using CommunityToolkit.Mvvm.ComponentModel;
+using System.IO;
 
 namespace Survey_converter.ViewModels
 {
@@ -35,7 +38,12 @@ namespace Survey_converter.ViewModels
         /// <summary>
         /// Структура данных, хранящая в себе информацию о выбранных сигналах
         /// </summary>
-        private MechanismController.Channel[] selectedSignals;
+        private DataStruct.Channel[] selectedSignals;
+
+        
+        private IStorageFolder? saveFolder;
+        [ObservableProperty]
+        private string _SaveFolderPath = string.Empty;
 
 
         public MainWindowViewModel()
@@ -70,6 +78,25 @@ namespace Survey_converter.ViewModels
             }
         }
 
+        [RelayCommand]
+        public async Task SelectSaveFolderAsync()
+        {
+            try
+            {
+                var _filesService = App.Current?.Services?.GetService<IFilesService>()
+                    ?? throw new NullReferenceException("Missing File Service instance.");
+
+                saveFolder = await _filesService.GetFolderAsync();
+                if (saveFolder is null) return;
+
+                SaveFolderPath = saveFolder.TryGetLocalPath()!;
+            }
+            catch (Exception ex)
+            {
+                ErrorMessages?.Add(ex.Message);
+            }
+        }
+
         #region flags of the selected conversion
         private const byte toCSV = 0;
         private const byte toEDF = 1;
@@ -78,7 +105,12 @@ namespace Survey_converter.ViewModels
         [RelayCommand]
         public void ToCSVCommand()
         {
-            MechanismController mechanism = new MechanismController(toCSV, selectedSignals);
+            if (selectedSignals != null && selectedSignals.Length > 0)
+            {
+                MechanismController mechanism = new MechanismController(toCSV, selectedSignals, SaveFolderPath);
+            }
+            else
+                return;
         }
 
         [RelayCommand]
@@ -91,14 +123,14 @@ namespace Survey_converter.ViewModels
         {
             //Debug.WriteLine("Call successful");
 
-            selectedSignals = new MechanismController.Channel[itemsCount]; //new MechanismController.Channel[itemsCount];
+            selectedSignals = new DataStruct.Channel[itemsCount];
 
             foreach (var channel in _Channels!.bosMeth!.Channels)
             {
                 for (int i = 0; i < itemsCount; i++)
                 {
-                    if (channel.SignalFileName!.Equals(selectedItems[i]!.ToString()))
-                         selectedSignals[i] = channel /*with { UnicNumber = channel.UnicNumber, SignalFileName = channel.SignalFileName, EffectiveFd = channel.EffectiveFd, Type = channel.Type }*/;
+                    if (channel.SignalFileName!.Equals(selectedItems[i]!.ToString())) ;
+                         selectedSignals[i] = channel;
                 }
             }
         }

@@ -9,3 +9,7 @@ C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj
 C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\refint\FileGenerationMechanism.dll
 C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.pdb
 C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\ref\FileGenerationMechanism.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\DataStruct.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\DataStruct.pdb
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.csproj.AssemblyReference.cache
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.csproj.CopyComplete

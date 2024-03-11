@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataStruct;
 
 namespace FileGenerationMechanism.MechanismLogic
 {
@@ -16,7 +17,7 @@ namespace FileGenerationMechanism.MechanismLogic
         /// <summary>
         /// получает на вход структуру, описывающую все выбранные сигналы и конечную папку, для сохранения файлов. Создаёт необходимые файлы и открывает их для записи.
         /// </summary>
-        public void Initialization();
+        public void Initialization(in Channel[] selectedChannels);
 
         /// <summary>
         /// позволяет добавить массив отсчётов одного сигнала

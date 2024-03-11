@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConvertButtonText" xml:space="preserve">
+    <value>Convert</value>
+  </data>
   <data name="FileDialog" xml:space="preserve">
     <value>Open Folder with MethDescription and signals files</value>
   </data>
   <data name="InformationAboutSignalsText" xml:space="preserve">
     <value>Information about signals:</value>
+  </data>
+  <data name="SaveFolderPathWatermark" xml:space="preserve">
+    <value>Please enter full path...</value>
+  </data>
+  <data name="SaveFolderTitle" xml:space="preserve">
+    <value>Enter the path where you want to convert the files: </value>
   </data>
   <data name="SelectFormatText" xml:space="preserve">
     <value>Select the desired conversion format:</value>

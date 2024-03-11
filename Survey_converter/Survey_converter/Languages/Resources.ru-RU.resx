@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ConvertButtonText" xml:space="preserve">
+    <value>Конвертировать</value>
+  </data>
   <data name="FileDialog" xml:space="preserve">
     <value>Выберите папку, в которой находятся файлы сигналов (и MethDescription.xml)</value>
   </data>
   <data name="InformationAboutSignalsText" xml:space="preserve">
     <value>Информация о сигналах:</value>
+  </data>
+  <data name="SaveFolderPathWatermark" xml:space="preserve">
+    <value>Введите полный путь...</value>
+  </data>
+  <data name="SaveFolderTitle" xml:space="preserve">
+    <value>Введите путь, по которому желаете конвентировать файлы: </value>
   </data>
   <data name="SelectFormatText" xml:space="preserve">
     <value>Выберите желаемый формат:</value>

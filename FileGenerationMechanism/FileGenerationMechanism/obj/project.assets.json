@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "DataStruct/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/DataStruct.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataStruct.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DataStruct/1.0.0": {
+      "type": "project",
+      "path": "../../DataStruct/DataStruct.csproj",
+      "msbuildProject": "../../DataStruct/DataStruct.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "DataStruct >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\User\\.nuget\\packages\\": {},
@@ -39,7 +58,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Avalonia\\Survey converter\\DataStruct\\DataStruct.csproj": {
+              "projectPath": "C:\\Avalonia\\Survey converter\\DataStruct\\DataStruct.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

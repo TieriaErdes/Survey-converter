@@ -1,0 +1,43 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="30">
+			<StackPanel>
+				<ToggleButton Content="To CSV" Margin="0, 0, 0, 8"/>
+				<ToggleButton Content="To EDF"/>
+			</StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+	<Style Selector="ToggleButton">
+		<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="CornerRadius" Value="10"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15"/>
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<Style Selector="ToggleButton:pointerover /template/ ContentPresenter">
+		<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+		<Setter Property="CornerRadius" Value="15"/>
+		<Setter Property="RenderTransform" Value="scale(1.11)"/>
+		<Setter Property="Opacity" Value="0.6"/>
+		<!-- not working with svg TODO: to correct this problem-->
+	</Style>
+
+	<Style Selector="ToggleButton:checked">
+		<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="CornerRadius" Value="10"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15"/>
+			</Transitions>
+		</Setter>
+	</Style>
+	
+</Styles>

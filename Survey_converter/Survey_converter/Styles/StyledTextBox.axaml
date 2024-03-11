@@ -1,0 +1,23 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="40">
+			<StackPanel>
+				<TextBox Width="40" Text="HelloHelloHello"/>
+				<TextBox Watermark="Hi!" Margin="0, 8, 0, 0"/>
+			</StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+	<Style Selector="TextBox">
+		<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBackgroundColor}"/>
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="TextWrapping" Value="Wrap"/>
+		<Setter Property="AcceptsReturn" Value="False"/>
+		<Setter Property="AcceptsTab" Value="False"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+		<Setter Property="MaxHeight" Value="20"/>
+	</Style>
+</Styles>

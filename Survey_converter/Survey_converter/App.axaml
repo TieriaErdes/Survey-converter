@@ -16,14 +16,19 @@
 	
 	<Application.Resources>
 		
-		<!-- 022677-->
-		<SolidColorBrush Color="#330278" x:Key="MainBackgroundColor"/>
+		<!-- 330278-->
+		<!-- FAF2E1-->
+		<!-- FFFAEE-->
+		<SolidColorBrush Color="#FAF2E1" x:Key="MainBackgroundColor"/>
 		
-		<SolidColorBrush Color="#0C0379" x:Key="SecondaryBackgroundColor"/>
+		<!-- 0C0379-->
+		<SolidColorBrush Color="#D0C0A0" x:Key="SecondaryBackgroundColor"/>
 		
+		<!-- 620176-->
 		<SolidColorBrush Color="#620176" x:Key="AcsentColor"/>
 		
-		<SolidColorBrush Color="#DEDCD0" x:Key="TextColor"/>
+		<!-- DEDCD0-->
+		<SolidColorBrush Color="#393836" x:Key="TextColor"/>
 	</Application.Resources>
 	
 	

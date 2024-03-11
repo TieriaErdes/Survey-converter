@@ -1432,9 +1432,22 @@
           "lib/net6.0/Tmds.DBus.Protocol.dll": {}
         }
       },
+      "DataStruct/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/DataStruct.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataStruct.dll": {}
+        }
+      },
       "FileGenerationMechanism/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "DataStruct": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/FileGenerationMechanism.dll": {}
         },
@@ -4648,6 +4661,11 @@
         "tmds.dbus.protocol.nuspec"
       ]
     },
+    "DataStruct/1.0.0": {
+      "type": "project",
+      "path": "../../DataStruct/DataStruct.csproj",
+      "msbuildProject": "../../DataStruct/DataStruct.csproj"
+    },
     "FileGenerationMechanism/1.0.0": {
       "type": "project",
       "path": "../../FileGenerationMechanism/FileGenerationMechanism/FileGenerationMechanism.csproj",
@@ -4662,6 +4680,7 @@
       "Avalonia.Fonts.Inter >= 11.0.2",
       "Avalonia.Themes.Fluent >= 11.0.2",
       "CommunityToolkit.Mvvm >= 8.2.1",
+      "DataStruct >= 1.0.0",
       "FileGenerationMechanism >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 9.0.0-preview.1.24080.9",
       "Resx >= 0.2.1"
@@ -4700,6 +4719,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Avalonia\\Survey converter\\DataStruct\\DataStruct.csproj": {
+              "projectPath": "C:\\Avalonia\\Survey converter\\DataStruct\\DataStruct.csproj"
+            },
             "C:\\Avalonia\\Survey converter\\FileGenerationMechanism\\FileGenerationMechanism\\FileGenerationMechanism.csproj": {
               "projectPath": "C:\\Avalonia\\Survey converter\\FileGenerationMechanism\\FileGenerationMechanism\\FileGenerationMechanism.csproj"
             }

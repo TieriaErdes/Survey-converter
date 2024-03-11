@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using DataStruct;
 
 namespace FileGenerationMechanism.MechanismLogic
 {
@@ -16,28 +17,6 @@ namespace FileGenerationMechanism.MechanismLogic
         private const byte toEDF = 1;
         #endregion
 
-        #region Data structure
-        [StructLayout(LayoutKind.Sequential)]
-        public class Channel
-        {
-            [XmlAttribute(AttributeName = "UnicNumber")]
-            public int UnicNumber { get; init; }
-            [XmlAttribute(AttributeName = "SignalFileName")]
-            public string? SignalFileName { get; init; }
-            [XmlAttribute(AttributeName = "Type")]
-            public int Type { get; init; }
-            [XmlAttribute(AttributeName = "EffectiveFd")]
-            public int EffectiveFd { get; init; }
-
-            public Channel(int unicNumber, string signalFileName, int type, int effectiveFd)
-            {
-                UnicNumber = unicNumber;
-                SignalFileName = signalFileName;
-                Type = type;
-                EffectiveFd = effectiveFd;
-            }
-        }
-        #endregion
 
         private Channel[] selectedSignals;
 
@@ -46,12 +25,8 @@ namespace FileGenerationMechanism.MechanismLogic
         /// </summary>
         /// <param name="control"></param>
         /// <param name="channels"></param>
-        public MechanismController(byte control,object channels) 
-        {
-            //selectedSignals = (Channel[])channels;
-            var res = channels.GetType;
-            var undf = channels as Channel[];
-
+        public MechanismController(byte control,Channel[] channels, string SaveFolderPath)
+        { 
             switch (control)
             {
                 case toCSV:
@@ -67,7 +42,8 @@ namespace FileGenerationMechanism.MechanismLogic
 
         private void ToCSVConversion()
         {
-            //Debug.WriteLine($"{selectedSignals[0].SignalFileName}, {selectedSignals[0].EffectiveFd}");
+            CSVMechanismCommands commands = new CSVMechanismCommands(selectedSignals);
+            
         }
 
         private void ToEDFConversion()

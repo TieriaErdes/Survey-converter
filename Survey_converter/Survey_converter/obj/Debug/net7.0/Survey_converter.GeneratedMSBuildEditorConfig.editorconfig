@@ -24,5 +24,11 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [C:/Avalonia/Survey converter/Survey_converter/Survey_converter/Styles/StyledLabel.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Avalonia/Survey converter/Survey_converter/Survey_converter/Styles/StyledTextBox.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Avalonia/Survey converter/Survey_converter/Survey_converter/Styles/StyledToggleButton.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Avalonia/Survey converter/Survey_converter/Survey_converter/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

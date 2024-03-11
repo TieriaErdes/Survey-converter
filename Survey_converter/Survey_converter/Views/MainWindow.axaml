@@ -22,6 +22,12 @@
 
 		<StyleInclude Source="/Styles/StyledButton.axaml"/>
 		<StyleInclude Source="/Styles/StyledLabel.axaml"/>
+		<StyleInclude Source="/Styles/StyledToggleButton.axaml"/>
+		<StyleInclude Source="/Styles/StyledTextBox.axaml"/>
+
+		<Style Selector="FlyoutPresenter.Menu">
+			<Setter Property="Background" Value="{DynamicResource MainBackgroundColor}"/>
+		</Style>
 
 	</Window.Styles>
 
@@ -33,27 +39,50 @@
 			<!-- func buttons-->
 			<Border Grid.Row="0" BorderThickness="0, 0, 0, 2" BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
 				<Grid ShowGridLines="False" ColumnDefinitions="Auto, *, Auto">
-					<Button Grid.Column="0" Content="File" Command="{Binding OpenFileFolderAsync}"/>
-
-					<Label Grid.Column="1" Content="{x:Static lang:Resources.Title}" HorizontalContentAlignment="Center"/>
 					
-					<Button Grid.Column="2" Content="Settings"/>
+					<!-- Open folder dialog-->
+					<Button Grid.Column="0" Content="File" Command="{Binding OpenFileFolderAsync}" Margin="4, 3, 0, 3"/>
+
+					<!-- title-->
+					<Label Grid.Column="1" Content="{x:Static lang:Resources.Title}" FontSize="16"
+						   HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+
+					<!-- Settings (choose language) button-->
+					<Button Grid.Column="2" Margin="0, 3, 4, 3" Content="Settings">
+						<Button.Flyout>
+							<MenuFlyout Placement="LeftEdgeAlignedTop" FlyoutPresenterClasses="Menu">
+								<MenuItem Header="RU" PointerPressed="RuItem_PointerPressed"/>
+								<MenuItem Header="-"/>
+								<MenuItem Header="ENG" PointerPressed="EngItem_PointerPressed"/>
+							</MenuFlyout>
+						</Button.Flyout>
+					</Button>
 				</Grid>
 			</Border>
 			
 			<!-- main grid-->
 			<Border Grid.Row="1">
-				<Grid ShowGridLines="True" ColumnDefinitions="Auto, *">
+				<Grid ShowGridLines="False" ColumnDefinitions="Auto, *">
 					
-					<!-- Type selector-->
+					<!-- Selector-->
 					<Border Grid.Column="0" BorderThickness="0, 0, 4, 4" BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}">
-						<Grid ShowGridLines="True" RowDefinitions="Auto, Auto">
+						<Grid ShowGridLines="False" RowDefinitions="Auto, Auto, Auto, Auto, Auto">
 							<Label Grid.Row="0" Content="{x:Static lang:Resources.SelectFormatText}"/>
 
 							<Grid Grid.Row="1" ColumnDefinitions="Auto, Auto">
-								<Button Grid.Column="0" Content="{x:Static lang:Resources.ToCSV}" Command="{Binding ToCSVCommand}" Margin="10, 4, 5, 0"/>
-								<Button Grid.Column="1" Content="{x:Static lang:Resources.ToEDF}"/>
+								<ToggleButton Grid.Column="0" x:Name="toCSVButton" Content="{x:Static lang:Resources.ToCSV}" Margin="10, 0, 10, 0"/>
+								<ToggleButton Grid.Column="1" x:Name="toEDFButton" Content="{x:Static lang:Resources.ToEDF}"/>
 							</Grid>
+							
+							<Label Grid.Row="2" Content="{x:Static lang:Resources.SaveFolderTitle}"/>
+							<Grid Grid.Row="3" ColumnDefinitions="Auto, *">
+								<Button Grid.Column="0" Content="Folder" Command="{Binding SelectSaveFolderAsync}"/>
+								<TextBox Grid.Column="1" MaxWidth="350" Watermark="{x:Static lang:Resources.SaveFolderPathWatermark}" Text="{Binding SaveFolderPath}" Margin="4, 0, 6, 0"/>
+							</Grid>
+							
+							<Button Grid.Row="4" x:Name="ConvertButton" Content="{x:Static lang:Resources.ConvertButtonText}" HorizontalAlignment="Center" Margin="0, 12, 0, 0"
+								    Click="Button_Click"/>
+							
 						</Grid>
 					</Border>
 					
@@ -64,21 +93,23 @@
 								   BorderBrush="{DynamicResource SecondaryBackgroundColor}" BorderThickness="0, 0, 0, 4"/>
 							
 							<!-- List box-->
-							<ListBox Grid.Row="1" 
-									 x:Name="ListOfSignals"
-									 Background="{DynamicResource ResourceKey=MainBackgroundColor}"
-									 ItemsSource="{Binding ChannelNames}"
-									 SelectionChanged="ListBox_SelectionChanged"
-									 SelectionMode="Toggle, Multiple">
-								 <ListBox.ItemTemplate>
-									 <DataTemplate>
-										<Border Padding="8"
-												BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}" BorderThickness="3" CornerRadius="8">
-											<Label Content="{Binding}"/>
-										</Border>
-									 </DataTemplate>
-								</ListBox.ItemTemplate>
-							</ListBox>
+							<Grid Grid.Row="1" ColumnDefinitions="Auto, *">
+								<ListBox Grid.Column="0"
+										 x:Name="ListOfSignals"
+										 Background="{DynamicResource ResourceKey=MainBackgroundColor}"
+										 ItemsSource="{Binding ChannelNames}"
+										 SelectionChanged="ListBox_SelectionChanged"
+										 SelectionMode="Toggle, Multiple">
+									<ListBox.ItemTemplate>
+										<DataTemplate>
+											<Border Padding="8"
+													BorderBrush="{DynamicResource ResourceKey=SecondaryBackgroundColor}" BorderThickness="0, 3, 0, 3" CornerRadius="8">
+												<Label Content="{Binding}" HorizontalContentAlignment="Center" Margin="10, 0, 10, 0"/>
+											</Border>
+										</DataTemplate>
+									</ListBox.ItemTemplate>
+								</ListBox>
+							</Grid>
 							
 							<!-- Error messages-->
 							<ListBox Grid.Column="2" DockPanel.Dock="Bottom" ItemsSource="{Binding ErrorMessages}" 

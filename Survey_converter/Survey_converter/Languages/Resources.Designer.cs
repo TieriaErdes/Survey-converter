@@ -61,6 +61,15 @@ namespace Survey_converter.Languages {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на ConvertButtonText.
+        /// </summary>
+        public static string ConvertButtonText {
+            get {
+                return ResourceManager.GetString("ConvertButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на FileDialog.
         /// </summary>
         public static string FileDialog {
@@ -75,6 +84,24 @@ namespace Survey_converter.Languages {
         public static string InformationAboutSignalsText {
             get {
                 return ResourceManager.GetString("InformationAboutSignalsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SaveFolderPathWatermark.
+        /// </summary>
+        public static string SaveFolderPathWatermark {
+            get {
+                return ResourceManager.GetString("SaveFolderPathWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на SaveFolderTitle.
+        /// </summary>
+        public static string SaveFolderTitle {
+            get {
+                return ResourceManager.GetString("SaveFolderTitle", resourceCulture);
             }
         }
         

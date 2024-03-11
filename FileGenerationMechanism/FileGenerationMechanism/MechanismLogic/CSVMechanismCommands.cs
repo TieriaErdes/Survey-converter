@@ -1,21 +1,23 @@
-﻿using System;
+﻿using DataStruct;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FileGenerationMechanism.MechanismLogic
 {
-    internal class EDFMechanismCommands : IMechanismCommands
+    internal class CSVMechanismCommands : IMechanismCommands
     {
-        public EDFMechanismCommands()
+        public CSVMechanismCommands(Channel[] selectedChannels)
         {
-            Initialization();
+            Initialization(selectedChannels);
         }
 
-        public void Initialization()
+        public void Initialization(in Channel[] selectedChannels)
         {
-
+            Debug.WriteLine("Initialization");
         }
 
         public void Reset()
