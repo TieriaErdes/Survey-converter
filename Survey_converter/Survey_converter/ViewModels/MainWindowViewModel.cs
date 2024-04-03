@@ -11,6 +11,7 @@ using FileGenerationMechanism.MechanismLogic;
 using DataStruct;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.IO;
+using System.Diagnostics;
 
 namespace Survey_converter.ViewModels
 {
@@ -40,7 +41,10 @@ namespace Survey_converter.ViewModels
         /// </summary>
         private DataStruct.Channel[] selectedSignals;
 
-        
+
+        IStorageFolder folder;
+
+
         private IStorageFolder? saveFolder;
         [ObservableProperty]
         private string _SaveFolderPath = string.Empty;
@@ -59,12 +63,12 @@ namespace Survey_converter.ViewModels
                 var _filesService = App.Current?.Services?.GetService<IFilesService>()
                     ?? throw new NullReferenceException("Missing File Service instance.");
 
-                var folder = await _filesService.GetFolderAsync();
+                folder = await _filesService.GetFolderAsync();
                 if (folder is null) return;
 
                 // класс десериализации MethDescroption.xml. Хранит в себе же все данные о сигналах 
                 _Channels = new SerializedChannel(folder.TryGetLocalPath()!);
-                if (_Channels is null) return;
+                if (_Channels.bosMeth is null) return;
 
                 ChannelNames = new ObservableCollection<string>();
                 foreach (var channel in _Channels.bosMeth!.Channels!)
@@ -105,9 +109,13 @@ namespace Survey_converter.ViewModels
         [RelayCommand]
         public void ToCSVCommand()
         {
+            SignalsReader reader = new SignalsReader();
+
             if (selectedSignals != null && selectedSignals.Length > 0)
             {
-                MechanismController mechanism = new MechanismController(toCSV, selectedSignals, SaveFolderPath);
+                MechanismController mechanism = new MechanismController(toCSV, selectedSignals, SaveFolderPath,
+                    SignalsReader.SignalsLengthCalculator(folder.TryGetLocalPath(), selectedSignals));
+                Debug.WriteLine("Successfully request conversation to CSV format");
             }
             else
                 return;
@@ -116,7 +124,12 @@ namespace Survey_converter.ViewModels
         [RelayCommand]
         public void ToEDFCommand()
         {
-
+            if (selectedSignals != null && selectedSignals.Length > 0)
+            {
+                return;
+            }
+            else
+                return;
         }
 
         public void Update_selectedSignalsNames(System.Collections.IList selectedItems, int itemsCount)
@@ -129,7 +142,7 @@ namespace Survey_converter.ViewModels
             {
                 for (int i = 0; i < itemsCount; i++)
                 {
-                    if (channel.SignalFileName!.Equals(selectedItems[i]!.ToString())) ;
+                    if (channel.SignalFileName!.Equals(selectedItems[i]!.ToString()))
                          selectedSignals[i] = channel;
                 }
             }

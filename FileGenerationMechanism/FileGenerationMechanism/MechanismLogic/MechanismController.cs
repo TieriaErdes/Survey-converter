@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DataStruct;
+using FileGenerationMechanism.MechanismRepozitory;
 
 namespace FileGenerationMechanism.MechanismLogic
 {
@@ -19,31 +20,43 @@ namespace FileGenerationMechanism.MechanismLogic
 
 
         private Channel[] selectedSignals;
+        private string saveFolderPath;
+        private long[] signalLengths;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="control"></param>
         /// <param name="channels"></param>
-        public MechanismController(byte control,Channel[] channels, string SaveFolderPath)
-        { 
-            switch (control)
+        public MechanismController(byte _control,Channel[] _selectadChannels, string _saveFolderPath, long[] _signalLengths)
+        {
+            try
             {
-                case toCSV:
-                    ToCSVConversion();
-                    break;
-                case toEDF:
-                    ToEDFConversion();
-                    break;
-                default:
-                    return;
+                selectedSignals = _selectadChannels;
+                saveFolderPath = _saveFolderPath;
+                signalLengths = _signalLengths;
+
+                switch (_control)
+                {
+                    case toCSV:
+                        ToCSVConversion();
+                        break;
+                    case toEDF:
+                        ToEDFConversion();
+                        break;
+                    default:
+                        return;
+                }
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
             }
         }
 
         private void ToCSVConversion()
         {
-            CSVMechanismCommands commands = new CSVMechanismCommands(selectedSignals);
-            
+            CSVMechanismCommands commands = new CSVMechanismCommands(selectedSignals, saveFolderPath, signalLengths);
         }
 
         private void ToEDFConversion()

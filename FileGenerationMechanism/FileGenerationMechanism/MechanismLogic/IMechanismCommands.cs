@@ -17,7 +17,7 @@ namespace FileGenerationMechanism.MechanismLogic
         /// <summary>
         /// получает на вход структуру, описывающую все выбранные сигналы и конечную папку, для сохранения файлов. Создаёт необходимые файлы и открывает их для записи.
         /// </summary>
-        public void Initialization(in Channel[] selectedChannels);
+        public void Initialization(in DataStruct.Channel[] selectedChannels, in string _saveFolderPath, in long[] signalLengths);
 
         /// <summary>
         /// позволяет добавить массив отсчётов одного сигнала
