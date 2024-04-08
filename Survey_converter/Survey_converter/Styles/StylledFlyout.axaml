@@ -1,0 +1,22 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="100, 40, 40, 40">
+            <!-- Add Controls for Previewer Here -->
+			<StackPanel>
+			<Button Content="Button">
+				<Button.Flyout>
+					<Flyout Placement="Left">
+						
+					</Flyout>
+				</Button.Flyout>
+			</Button>
+			</StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+	<Style Selector="FlyoutPresenter">
+		<Setter Property="Background" Value="{DynamicResource MainBackgroundColor}"/>
+	</Style>
+</Styles>

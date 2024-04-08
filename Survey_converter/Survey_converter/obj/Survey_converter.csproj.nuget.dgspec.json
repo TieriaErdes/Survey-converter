@@ -108,6 +108,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Resx": {
+              "target": "Package",
+              "version": "[0.2.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -178,31 +184,31 @@
           "dependencies": {
             "Avalonia": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.1.0-beta1, )"
             },
             "Avalonia.Desktop": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.1.0-beta1, )"
             },
             "Avalonia.Diagnostics": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.1.0-beta1, )"
             },
             "Avalonia.Fonts.Inter": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.1.0-beta1, )"
             },
             "Avalonia.Themes.Fluent": {
               "target": "Package",
-              "version": "[11.0.2, )"
+              "version": "[11.1.0-beta1, )"
             },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
-              "version": "[8.2.1, )"
+              "version": "[8.2.2, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
-              "version": "[9.0.0-preview.1.24080.9, )"
+              "version": "[9.0.0-preview.2.24128.5, )"
             },
             "Resx": {
               "target": "Package",

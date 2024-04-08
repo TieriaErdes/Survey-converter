@@ -1,0 +1,6 @@
+Z:\builds\survey converter linux\Survey_converter.pdb
+Z:\builds\survey converter linux\libHarfBuzzSharp.so
+Z:\builds\survey converter linux\libSkiaSharp.so
+Z:\builds\survey converter linux\DataStruct.pdb
+Z:\builds\survey converter linux\FileGenerationMechanism.pdb
+Z:\builds\survey converter linux\Survey_converter

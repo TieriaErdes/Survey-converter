@@ -13,3 +13,11 @@ C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin
 C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\DataStruct.pdb
 C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.csproj.AssemblyReference.cache
 C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.csproj.CopyComplete
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\en\FileGenerationMechanism.resources.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\bin\Debug\net7.0\ru-RU\FileGenerationMechanism.resources.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.Localization.Resources.resources
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.Localization.Resources.en.resources
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.Localization.Resources.ru-RU.resources
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\FileGenerationMechanism.csproj.GenerateResource.cache
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\en\FileGenerationMechanism.resources.dll
+C:\Avalonia\Survey converter\FileGenerationMechanism\FileGenerationMechanism\obj\Debug\net7.0\ru-RU\FileGenerationMechanism.resources.dll

@@ -1,0 +1,7 @@
+Z:\builds\survey converter\Survey_converter.pdb
+Z:\builds\survey converter\av_libglesv2.dll
+Z:\builds\survey converter\libHarfBuzzSharp.dll
+Z:\builds\survey converter\libSkiaSharp.dll
+Z:\builds\survey converter\DataStruct.pdb
+Z:\builds\survey converter\FileGenerationMechanism.pdb
+Z:\builds\survey converter\Survey_converter.exe

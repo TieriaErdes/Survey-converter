@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using Survey_converter.Models;
 using Avalonia.Platform.Storage;
 using FileGenerationMechanism.MechanismLogic;
+using FileGenerationMechanism;
 using DataStruct;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.IO;
 using System.Diagnostics;
+using FileGenerationMechanism.MechanismRepository;
 
 namespace Survey_converter.ViewModels
 {
@@ -43,16 +45,22 @@ namespace Survey_converter.ViewModels
 
 
         IStorageFolder folder;
+        string? folderPath;
 
 
         private IStorageFolder? saveFolder;
+
+        CSVMechanismCommands csv;
+
+
         [ObservableProperty]
         private string _SaveFolderPath = string.Empty;
-
 
         public MainWindowViewModel()
         {
             ErrorMessages?.Clear();
+
+            csv = new CSVMechanismCommands();
         }
 
         [RelayCommand]
@@ -66,8 +74,10 @@ namespace Survey_converter.ViewModels
                 folder = await _filesService.GetFolderAsync();
                 if (folder is null) return;
 
+
+                folderPath = folder.TryGetLocalPath();
                 // класс десериализации MethDescroption.xml. Хранит в себе же все данные о сигналах 
-                _Channels = new SerializedChannel(folder.TryGetLocalPath()!);
+                _Channels = new SerializedChannel(folderPath!);
                 if (_Channels.bosMeth is null) return;
 
                 ChannelNames = new ObservableCollection<string>();
@@ -81,6 +91,7 @@ namespace Survey_converter.ViewModels
                 ErrorMessages!.Add(ex.Message);
             }
         }
+
 
         [RelayCommand]
         public async Task SelectSaveFolderAsync()
@@ -101,36 +112,6 @@ namespace Survey_converter.ViewModels
             }
         }
 
-        #region flags of the selected conversion
-        private const byte toCSV = 0;
-        private const byte toEDF = 1;
-        #endregion
-
-        [RelayCommand]
-        public void ToCSVCommand()
-        {
-            SignalsReader reader = new SignalsReader();
-
-            if (selectedSignals != null && selectedSignals.Length > 0)
-            {
-                MechanismController mechanism = new MechanismController(toCSV, selectedSignals, SaveFolderPath,
-                    SignalsReader.SignalsLengthCalculator(folder.TryGetLocalPath(), selectedSignals));
-                Debug.WriteLine("Successfully request conversation to CSV format");
-            }
-            else
-                return;
-        }
-
-        [RelayCommand]
-        public void ToEDFCommand()
-        {
-            if (selectedSignals != null && selectedSignals.Length > 0)
-            {
-                return;
-            }
-            else
-                return;
-        }
 
         public void Update_selectedSignalsNames(System.Collections.IList selectedItems, int itemsCount)
         {
@@ -143,11 +124,67 @@ namespace Survey_converter.ViewModels
                 for (int i = 0; i < itemsCount; i++)
                 {
                     if (channel.SignalFileName!.Equals(selectedItems[i]!.ToString()))
-                         selectedSignals[i] = channel;
+                        selectedSignals[i] = channel;
                 }
             }
         }
 
-        
+
+        #region Convertion flags
+        public byte ActiveConvertingFlag;
+
+        private const byte ToCSV = 0;
+        private const byte ToEDF = 1;
+        #endregion
+
+
+        #region Conversion commands
+
+        [RelayCommand]
+        public void Initialization_Command()
+        {
+            if (selectedSignals == null || selectedSignals.Length == 0)
+                return;
+
+            if (ActiveConvertingFlag == ToCSV)
+                csv.Initialization(selectedSignals, folderPath!, SaveFolderPath,
+                    SignalsLengthCalculator.Calculation(folderPath!, selectedSignals));
+            else
+            {
+                // Здесь будет код конвертации в EDF
+            }
+        }
+
+        [RelayCommand]
+        public void AddData_Command()
+        {
+            if (selectedSignals == null || selectedSignals.Length == 0)
+                return;
+            
+            if (ActiveConvertingFlag == ToCSV)
+                csv.AddData();
+        }
+
+        [RelayCommand]
+        public void Finalization_Command()
+        {
+            if(selectedSignals == null || selectedSignals.Length == 0)
+                return;
+
+            if (ActiveConvertingFlag == ToCSV)
+                csv.Finalization();
+        }
+
+        [RelayCommand]
+        public void Reset_Command()
+        {
+            if (selectedSignals == null || selectedSignals.Length == 0)
+                return;
+
+            if (ActiveConvertingFlag == ToCSV)
+                csv.Reset();
+        }
+
+        #endregion
     }
 }

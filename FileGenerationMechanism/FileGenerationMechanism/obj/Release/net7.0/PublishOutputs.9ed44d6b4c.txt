@@ -1,0 +1,13 @@
+Z:\builds\survey converter\FileGenerationMechanism.dll
+Z:\builds\survey converter\FileGenerationMechanism.deps.json
+Z:\builds\survey converter\FileGenerationMechanism.pdb
+Z:\builds\survey converter\en\FileGenerationMechanism.resources.dll
+Z:\builds\survey converter\ru-RU\FileGenerationMechanism.resources.dll
+Z:\builds\survey converter\Microsoft.Win32.SystemEvents.dll
+Z:\builds\survey converter\Resx.dll
+Z:\builds\survey converter\System.Drawing.Common.dll
+Z:\builds\survey converter\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+Z:\builds\survey converter\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+Z:\builds\survey converter\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+Z:\builds\survey converter\DataStruct.dll
+Z:\builds\survey converter\DataStruct.pdb

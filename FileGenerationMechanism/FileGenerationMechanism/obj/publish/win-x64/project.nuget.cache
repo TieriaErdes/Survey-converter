@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "egjcTaZATzq89qGSmoUUasgSEQ/2KmtljQmBf+faEUgoxnaLK5vGB8dWJKtO/f1yK31nvZk1C+HQSqTLz6X8mA==",
+  "success": true,
+  "projectFilePath": "C:\\Avalonia\\Survey converter\\FileGenerationMechanism\\FileGenerationMechanism\\FileGenerationMechanism.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.win32.systemevents\\4.6.0-preview.18571.3\\microsoft.win32.systemevents.4.6.0-preview.18571.3.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\resx\\0.2.1\\resx.0.2.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\runtime.any.system.runtime\\4.3.0\\runtime.any.system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\runtime.win.system.runtime.extensions\\4.3.0\\runtime.win.system.runtime.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.drawing.common\\4.6.0-preview.18571.3\\system.drawing.common.4.6.0-preview.18571.3.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.private.uri\\4.3.0\\system.private.uri.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.0\\system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.12\\microsoft.netcore.app.runtime.win-x64.7.0.12.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.12\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.12.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.12\\microsoft.aspnetcore.app.runtime.win-x64.7.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

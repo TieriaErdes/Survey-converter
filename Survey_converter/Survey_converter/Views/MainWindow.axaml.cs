@@ -1,6 +1,6 @@
 using Avalonia.Controls;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Survey_converter.ViewModels;
+using System.Diagnostics;
 using System.Globalization;
 
 namespace Survey_converter.Views
@@ -9,6 +9,10 @@ namespace Survey_converter.Views
     {
         private bool vmDataContext_flag;
 
+        private bool selectedSignals_in_not_zero;
+        private bool converterFormat_isSelected;
+        private bool savePath_isInputted;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -16,19 +20,30 @@ namespace Survey_converter.Views
             ConvertButton.IsEnabled = false;
 
             vmDataContext_flag = (MainWindowViewModel)DataContext == null ? true : false;
+
+            selectedSignals_in_not_zero = false;
+            converterFormat_isSelected = false;
+            savePath_isInputted = false;
         }
 
-        
+
 
         private void ListBox_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
         {
-            if (ListOfSignals.SelectedItems == null || ListOfSignals.SelectedItems.Count == 0) 
+            if (ListOfSignals.SelectedItems == null || ListOfSignals.SelectedItems.Count == 0)
+            {
+                selectedSignals_in_not_zero = false;
                 return;
+            }
 
             if (vmDataContext_flag)
             {
-                ConvertButton.IsEnabled = true;
+                selectedSignals_in_not_zero = true;
+
                 ((MainWindowViewModel)DataContext!).Update_selectedSignalsNames(ListOfSignals.SelectedItems, ListOfSignals.SelectedItems.Count);
+
+                if (selectedSignals_in_not_zero && converterFormat_isSelected && savePath_isInputted)
+                    ConvertButton.IsEnabled = true;
             }
         }
 
@@ -42,16 +57,65 @@ namespace Survey_converter.Views
             Languages.Resources.Culture = new CultureInfo("en-US");
         }
 
-        private void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        #region Conversion flags
+        private const byte ToCSV = 0;
+        private const byte ToEDF = 1;
+        #endregion
+
+        private void ToggleButton_Click_1(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            if (toEDFButton.IsChecked == true) 
+                toEDFButton.IsChecked = false;
+
+            ((MainWindowViewModel)DataContext!).ActiveConvertingFlag = ToCSV;
+
+            converterFormat_isSelected = true;
+
+            if (selectedSignals_in_not_zero && converterFormat_isSelected && savePath_isInputted)
+                ConvertButton.IsEnabled = true;
+        }
+
+        private void ToggleButton_Click_2(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             if (toCSVButton.IsChecked == true)
-            {
-                ((MainWindowViewModel)DataContext).ToCSVCommand();
-            }
-            else if (toEDFButton.IsChecked == false)
-            {
-                ((MainWindowViewModel)DataContext).ToEDFCommand();
-            }
+                toCSVButton.IsChecked = false;
+
+            ((MainWindowViewModel)DataContext!).ActiveConvertingFlag = ToCSV;
+
+            converterFormat_isSelected = true;
+
+            if (selectedSignals_in_not_zero && converterFormat_isSelected && savePath_isInputted)
+                ConvertButton.IsEnabled = true;
+        }
+
+        private void Button_Click_3(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            savePath_isInputted = true;
+
+            if (selectedSignals_in_not_zero && converterFormat_isSelected && savePath_isInputted)
+                ConvertButton.IsEnabled = true;
+        }
+
+        private void TextBox_TextChanged(object? sender, Avalonia.Controls.TextChangedEventArgs e)
+        {
+            if (TextBox.Text == string.Empty || ConvertButton.IsEnabled) return;
+
+            savePath_isInputted = true;
+
+            if (selectedSignals_in_not_zero && converterFormat_isSelected && savePath_isInputted)
+                ConvertButton.IsEnabled = true;
+        }
+
+        private void Initialization_Button(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Reset.IsEnabled = true;
+            Finalization.IsEnabled = true;
+            AddData.IsEnabled = true;
+        }
+
+        private void Reset_Button(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            ConvertButton.Flyout!.Hide();
         }
     }
 }

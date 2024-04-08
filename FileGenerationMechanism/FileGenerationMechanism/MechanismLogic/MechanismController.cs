@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DataStruct;
-using FileGenerationMechanism.MechanismRepozitory;
+using FileGenerationMechanism.MechanismRepository;
 
 namespace FileGenerationMechanism.MechanismLogic
 {
@@ -18,30 +18,19 @@ namespace FileGenerationMechanism.MechanismLogic
         private const byte toEDF = 1;
         #endregion
 
-
-        private Channel[] selectedSignals;
-        private string saveFolderPath;
-        private long[] signalLengths;
-
         /// <summary>
-        /// 
+        ///  Конструктор конвертера сигналов, распределяющий какой вид конвертации выбран пользователем
         /// </summary>
-        /// <param name="control"></param>
-        /// <param name="channels"></param>
-        public MechanismController(byte _control,Channel[] _selectadChannels, string _saveFolderPath, long[] _signalLengths)
+        public MechanismController(byte _control,Channel[] _selectedChannels, string _mainPath, string _saveFolderPath, int[] _signalLengths)
         {
             try
             {
-                selectedSignals = _selectadChannels;
-                saveFolderPath = _saveFolderPath;
-                signalLengths = _signalLengths;
-
                 switch (_control)
                 {
-                    case toCSV:
-                        ToCSVConversion();
+                    case toCSV: // == 0
+                        CSVMechanismCommands commands = new CSVMechanismCommands(_selectedChannels, _mainPath, _saveFolderPath, _signalLengths);
                         break;
-                    case toEDF:
+                    case toEDF: // == 1
                         ToEDFConversion();
                         break;
                     default:
@@ -52,11 +41,6 @@ namespace FileGenerationMechanism.MechanismLogic
             {
                 Debug.WriteLine(ex);
             }
-        }
-
-        private void ToCSVConversion()
-        {
-            CSVMechanismCommands commands = new CSVMechanismCommands(selectedSignals, saveFolderPath, signalLengths);
         }
 
         private void ToEDFConversion()
