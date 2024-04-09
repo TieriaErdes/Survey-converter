@@ -87,3 +87,10 @@ C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Avalonia\Survey_converter.dll
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\Avalonia\Survey_converter.pdb
 C:\Avalonia\Survey converter\Survey_converter\Survey_converter\obj\Debug\net7.0\refint\Avalonia\Survey_converter.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Avalonia.Svg.Skia.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\ExCSS.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\ShimSkiaSharp.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\SkiaSharp.HarfBuzz.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Svg.Custom.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Svg.Model.dll
+C:\Avalonia\Survey converter\Survey_converter\Survey_converter\bin\Debug\net7.0\Svg.Skia.dll

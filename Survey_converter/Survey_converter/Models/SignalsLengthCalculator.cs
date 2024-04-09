@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Survey_converter.Models
 {
-    internal class SignalsLengthCalculator
+    internal sealed class SignalsLengthCalculator
     {
         public static int[] Calculation(string mainPath, DataStruct.Channel[] signals)
         {

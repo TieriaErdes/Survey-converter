@@ -1,6 +1,5 @@
 using Avalonia.Controls;
 using Survey_converter.ViewModels;
-using System.Diagnostics;
 using System.Globalization;
 
 namespace Survey_converter.Views
@@ -19,8 +18,6 @@ namespace Survey_converter.Views
 
             ConvertButton.IsEnabled = false;
 
-            vmDataContext_flag = (MainWindowViewModel)DataContext == null ? true : false;
-
             selectedSignals_in_not_zero = false;
             converterFormat_isSelected = false;
             savePath_isInputted = false;
@@ -36,26 +33,33 @@ namespace Survey_converter.Views
                 return;
             }
 
-            if (vmDataContext_flag)
-            {
-                selectedSignals_in_not_zero = true;
+            Reset.IsEnabled = false;
+            Finalization.IsEnabled = false;
+            AddData.IsEnabled = false;
 
-                ((MainWindowViewModel)DataContext!).Update_selectedSignalsNames(ListOfSignals.SelectedItems, ListOfSignals.SelectedItems.Count);
+            selectedSignals_in_not_zero = true;
 
-                if (selectedSignals_in_not_zero && converterFormat_isSelected && savePath_isInputted)
-                    ConvertButton.IsEnabled = true;
-            }
+            ((MainWindowViewModel)DataContext!).Update_selectedSignalsNames(ListOfSignals.SelectedItems, ListOfSignals.SelectedItems.Count);
+
+            if (selectedSignals_in_not_zero && converterFormat_isSelected && savePath_isInputted)
+                ConvertButton.IsEnabled = true;
         }
 
         private void RuItem_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
         {
             Languages.Resources.Culture = new CultureInfo("ru-RU");
+
+            InitializeComponent();
         }
 
         private void EngItem_PointerPressed(object? sender, Avalonia.Input.PointerPressedEventArgs e)
         {
             Languages.Resources.Culture = new CultureInfo("en-US");
+
+            InitializeComponent();
         }
+
+
 
         #region Conversion flags
         private const byte ToCSV = 0;
@@ -115,6 +119,10 @@ namespace Survey_converter.Views
 
         private void Reset_Button(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            Reset.IsEnabled = false;
+            Finalization.IsEnabled = false;
+            AddData.IsEnabled = false;
+
             ConvertButton.Flyout!.Hide();
         }
     }

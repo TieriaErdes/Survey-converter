@@ -61,11 +61,29 @@ namespace Survey_converter.Languages {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на AddDataCommandText.
+        /// </summary>
+        public static string AddDataCommandText {
+            get {
+                return ResourceManager.GetString("AddDataCommandText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на ConvertButtonText.
         /// </summary>
         public static string ConvertButtonText {
             get {
                 return ResourceManager.GetString("ConvertButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ConvertCommandsText.
+        /// </summary>
+        public static string ConvertCommandsText {
+            get {
+                return ResourceManager.GetString("ConvertCommandsText", resourceCulture);
             }
         }
         
@@ -79,11 +97,83 @@ namespace Survey_converter.Languages {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на FileDialogText.
+        /// </summary>
+        public static string FileDialogText {
+            get {
+                return ResourceManager.GetString("FileDialogText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на FinalizationCommandText.
+        /// </summary>
+        public static string FinalizationCommandText {
+            get {
+                return ResourceManager.GetString("FinalizationCommandText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на get_FolderWithSignals_Exeption.
+        /// </summary>
+        public static string get_FolderWithSignals_Exeption {
+            get {
+                return ResourceManager.GetString("get_FolderWithSignals_Exeption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Information about signals:.
         /// </summary>
         public static string InformationAboutSignalsText {
             get {
                 return ResourceManager.GetString("InformationAboutSignalsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на InitializationCommandText.
+        /// </summary>
+        public static string InitializationCommandText {
+            get {
+                return ResourceManager.GetString("InitializationCommandText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Missing_FS_instance.
+        /// </summary>
+        public static string Missing_FS_instance_Exeption {
+            get {
+                return ResourceManager.GetString("Missing_FS_instance_Exeption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на process_DesiarializationFailed_Exeption.
+        /// </summary>
+        public static string process_DesiarializationFailed_Exeption {
+            get {
+                return ResourceManager.GetString("process_DesiarializationFailed_Exeption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ProgressOfConvertionText.
+        /// </summary>
+        public static string ProgressOfConvertionText {
+            get {
+                return ResourceManager.GetString("ProgressOfConvertionText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ResetCommandText.
+        /// </summary>
+        public static string ResetCommandText {
+            get {
+                return ResourceManager.GetString("ResetCommandText", resourceCulture);
             }
         }
         

@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddDataCommandText" xml:space="preserve">
+    <value>Добавить данные</value>
+  </data>
   <data name="ConvertButtonText" xml:space="preserve">
     <value>Конвертировать</value>
+  </data>
+  <data name="ConvertCommandsText" xml:space="preserve">
+    <value>Команды конвертации:</value>
   </data>
   <data name="FileDialog" xml:space="preserve">
     <value>Выберите папку, в которой находятся файлы сигналов (и MethDescription.xml)</value>
   </data>
+  <data name="FileDialogText" xml:space="preserve">
+    <value>Выберите папку</value>
+  </data>
+  <data name="FinalizationCommandText" xml:space="preserve">
+    <value>Финализация</value>
+  </data>
+  <data name="get_FolderWithSignals_Exeption" xml:space="preserve">
+    <value>Не удаётся получить папку с сигналами</value>
+  </data>
   <data name="InformationAboutSignalsText" xml:space="preserve">
     <value>Информация о сигналах:</value>
+  </data>
+  <data name="InitializationCommandText" xml:space="preserve">
+    <value>Инициализация</value>
+  </data>
+  <data name="Missing_FS_instance_Exeption" xml:space="preserve">
+    <value>Отсутсвует сервис файлов</value>
+  </data>
+  <data name="process_DesiarializationFailed_Exeption" xml:space="preserve">
+    <value>Десериализация MethDescription не удалась</value>
+  </data>
+  <data name="ProgressOfConvertionText" xml:space="preserve">
+    <value>Прогресс конвертации:</value>
+  </data>
+  <data name="ResetCommandText" xml:space="preserve">
+    <value>Сброс</value>
   </data>
   <data name="SaveFolderPathWatermark" xml:space="preserve">
     <value>Введите полный путь...</value>

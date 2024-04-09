@@ -1,31 +1,23 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Survey_converter.Services;
 using System.Collections.ObjectModel;
-using System.Threading.Channels;
 using System;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using Survey_converter.Models;
 using Avalonia.Platform.Storage;
 using FileGenerationMechanism.MechanismLogic;
-using FileGenerationMechanism;
-using DataStruct;
 using CommunityToolkit.Mvvm.ComponentModel;
-using System.IO;
-using System.Diagnostics;
-using FileGenerationMechanism.MechanismRepository;
 
 namespace Survey_converter.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting => "Welcome to Avalonia!";
-
 
         private ObservableCollection<string>? _ChannelNames;
         /// <summary>
         /// Реализует в себе динамическое хранение списка строк названий файлов сигналов.
-        /// Значения строк получают Item в SignalsPopupListBox (MainWindow)
+        /// Значения строк получают Item в ListOfSignals (MainWindow)
         /// </summary>
         public ObservableCollection<string>? ChannelNames
         {
@@ -41,20 +33,20 @@ namespace Survey_converter.ViewModels
         /// <summary>
         /// Структура данных, хранящая в себе информацию о выбранных сигналах
         /// </summary>
-        private DataStruct.Channel[] selectedSignals;
+        private DataStruct.Channel[]? selectedSignals;
 
 
-        IStorageFolder folder;
+        IStorageFolder? folder;
         string? folderPath;
-
-
         private IStorageFolder? saveFolder;
-
-        CSVMechanismCommands csv;
-
-
         [ObservableProperty]
         private string _SaveFolderPath = string.Empty;
+
+        /// <summary>
+        /// Класс библиотеки для конвертации в формат CSV
+        /// </summary>
+        CSVMechanismCommands csv;
+
 
         public MainWindowViewModel()
         {
@@ -69,16 +61,16 @@ namespace Survey_converter.ViewModels
             try
             {
                 var _filesService = App.Current?.Services?.GetService<IFilesService>()
-                    ?? throw new NullReferenceException("Missing File Service instance.");
+                    ?? throw new NullReferenceException(Languages.Resources.Missing_FS_instance_Exeption);
 
-                folder = await _filesService.GetFolderAsync();
-                if (folder is null) return;
+                folder = await _filesService.GetFolderAsync() 
+                    ?? throw new NullReferenceException(Languages.Resources.get_FolderWithSignals_Exeption);
 
 
                 folderPath = folder.TryGetLocalPath();
                 // класс десериализации MethDescroption.xml. Хранит в себе же все данные о сигналах 
-                _Channels = new SerializedChannel(folderPath!);
-                if (_Channels.bosMeth is null) return;
+                _Channels = new SerializedChannel(folderPath!)
+                    ?? throw new NullReferenceException(Languages.Resources.process_DesiarializationFailed_Exeption);
 
                 ChannelNames = new ObservableCollection<string>();
                 foreach (var channel in _Channels.bosMeth!.Channels!)
@@ -99,7 +91,7 @@ namespace Survey_converter.ViewModels
             try
             {
                 var _filesService = App.Current?.Services?.GetService<IFilesService>()
-                    ?? throw new NullReferenceException("Missing File Service instance.");
+                    ?? throw new NullReferenceException(Languages.Resources.Missing_FS_instance_Exeption);
 
                 saveFolder = await _filesService.GetFolderAsync();
                 if (saveFolder is null) return;
@@ -115,8 +107,6 @@ namespace Survey_converter.ViewModels
 
         public void Update_selectedSignalsNames(System.Collections.IList selectedItems, int itemsCount)
         {
-            //Debug.WriteLine("Call successful");
-
             selectedSignals = new DataStruct.Channel[itemsCount];
 
             foreach (var channel in _Channels!.bosMeth!.Channels)

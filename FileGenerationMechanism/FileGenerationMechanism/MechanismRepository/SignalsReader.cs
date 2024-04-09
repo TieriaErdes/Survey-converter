@@ -15,6 +15,7 @@ namespace FileGenerationMechanism.MechanismRepository
                 //var stopWatch = Stopwatch.StartNew();
 
                 double[] currentPartOfSignal = new double[lengthOfInterval];
+
                 await Task.Run(() =>
                 {
                     using (FileStream signalFile = new FileStream(signalName, FileMode.Open))
@@ -30,8 +31,7 @@ namespace FileGenerationMechanism.MechanismRepository
                         for (int i = 0; i < lengthOfInterval; i++)
                             currentPartOfSignal[i] = BitConverter.ToDouble(bytes, i * sizeof(double));
                     }
-                }
-                );
+                });
                 //Debug.WriteLine($"{signalName} {stopWatch.Elapsed}");
                 return currentPartOfSignal;
             }
@@ -62,9 +62,6 @@ namespace FileGenerationMechanism.MechanismRepository
             {
                 results = tasks[i].Result;
             }
-
-            //foreach (var result in results)
-            //    Debug.WriteLine(result.FirstOrDefault());
 
             return results;
         }

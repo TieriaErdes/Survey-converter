@@ -42,7 +42,9 @@
 				<Grid ShowGridLines="False" ColumnDefinitions="Auto, *, Auto">
 					
 					<!-- Open folder dialog-->
-					<Button Grid.Column="0" Content="File" Command="{Binding OpenFileFolderAsync}" Margin="4, 3, 0, 3"/>
+					<Button Grid.Column="0" Command="{Binding OpenFileFolderAsync}" Margin="4, 3, 0, 3">
+						<Image Source="{SvgImage /Assets/file_icon.svg}" Height="20"/>
+					</Button>
 
 					<!-- title-->
 					<Label Grid.Column="1" Content="{x:Static lang:Resources.Title}" FontSize="16"
@@ -50,6 +52,8 @@
 
 					<!-- Settings (choose language) button-->
 					<Button Grid.Column="2" Margin="0, 3, 4, 3" Content="Settings">
+						<Image Source="{SvgImage /Assets/settings_icon.svg}" Height="20"/>
+						
 						<Button.Flyout>
 							<MenuFlyout Placement="LeftEdgeAlignedTop" FlyoutPresenterClasses="Menu">
 								<MenuItem Header="RU" PointerPressed="RuItem_PointerPressed"/>
@@ -81,10 +85,12 @@
 							<!-- Selector input save folder button and box-->
 							<Label Grid.Row="2" Content="{x:Static lang:Resources.SaveFolderTitle}"/>
 							<Grid Grid.Row="3" ColumnDefinitions="Auto, Auto">
-								<Button Grid.Column="0" Content="Folder" Command="{Binding SelectSaveFolderAsync}"  Margin="20, 0, 0, 0" 
-										Click="Button_Click_3"/>
+								<Button Grid.Column="0" Content="Folder" Command="{Binding SelectSaveFolderAsync}"  Margin="20, 0, 0, 0"
+										Click="Button_Click_3">
+									<Image Source="{SvgImage /Assets/icons8-folder.svg}" Height="20"/>
+								</Button>
 								<TextBox x:Name="TextBox" Grid.Column="1" Width="300" MaxWidth="350"
-										 Watermark="{x:Static lang:Resources.SaveFolderPathWatermark}" Text="{Binding SaveFolderPath}" 
+										 Watermark="{x:Static lang:Resources.SaveFolderPathWatermark}" Text="{Binding SaveFolderPath}"
 										 Margin="4, 0, 6, 0" TextChanged="TextBox_TextChanged"/>
 							</Grid>
 
@@ -93,23 +99,23 @@
 								<Button.Flyout>
 									<Flyout Placement="Left">
 										<Grid ShowGridLines="True" RowDefinitions="Auto, *" >
-											<Label Grid.Row="0" Content="Convert commands" HorizontalAlignment="Center"/>
+											<Label Grid.Row="0" Content="{x:Static lang:Resources.ConvertCommandsText}" HorizontalAlignment="Center"/>
 
 											<Grid Grid.Row="1" ShowGridLines="True" ColumnDefinitions="*, *" Margin="0, 10, 0, 0">
 
 												<Grid Grid.Column="0" RowDefinitions="Auto, Auto, Auto, Auto">
-													<Button Grid.Row="0" x:Name="Initialization" Content="Initialization"
+													<Button Grid.Row="0" x:Name="Initialization" Content="{x:Static lang:Resources.InitializationCommandText}"
 														 Click="Initialization_Button" Margin="0, 8, 0, 0"
 															Command="{Binding Initialization_Command}"/>
-													<Button Grid.Row="1" x:Name="AddData" Content="Add Data" 
+													<Button Grid.Row="1" x:Name="AddData" Content="{x:Static lang:Resources.AddDataCommandText}" 
 															IsEnabled="False" Margin="0, 8, 0, 0"
 															Command="{Binding AddData_Command}"/>
-													<Button Grid.Row="2" x:Name="Reset" Content="Reset" 
-														 	IsEnabled="False" Click="Reset_Button" Margin="0, 8, 0, 0"
-															Command="{Binding Reset_Command}"/>
-													<Button Grid.Row="3" x:Name="Finalization" Content="Finalization" 
+													<Button Grid.Row="2" x:Name="Finalization" Content="{x:Static lang:Resources.FinalizationCommandText}" 
 															IsEnabled="False" Margin="0, 5, 0, 0"
 															Command="{Binding Finalization_Command}"/>
+													<Button Grid.Row="3" x:Name="Reset" Content="{x:Static lang:Resources.ResetCommandText}"
+														 	IsEnabled="False" Click="Reset_Button" Margin="0, 8, 0, 0"
+															Command="{Binding Reset_Command}"/>
 												</Grid>
 
 												<Grid Grid.Column="1" RowDefinitions="Auto, *">

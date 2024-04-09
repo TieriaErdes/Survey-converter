@@ -6,7 +6,7 @@ using DataStruct;
 
 namespace Survey_converter.Models
 {
-    public sealed class SerializedChannel
+    internal sealed class SerializedChannel
     {
         public BOSMeth? bosMeth;
 
@@ -18,6 +18,16 @@ namespace Survey_converter.Models
         public string? DirectoryPath;
 
         private const string _fileName = @"MethDescription.xml";
+
+        /// <summary>
+        /// Constructor for deserialize data from xml file
+        /// </summary>
+        public SerializedChannel(string path)
+        {
+            //DirectoryPath = Path.GetDirectoryName(path) + "\\" ?? throw new Exception($"DirectoryPath is equals to null");
+            DirectoryPath = Path.Join(path, Path.DirectorySeparatorChar.ToString());
+            DeserializeData();
+        }
 
         // Десериализатор 
         private void DeserializeData()
@@ -38,17 +48,6 @@ namespace Survey_converter.Models
             {
                 Debug.WriteLine($"Deserializing failed. Cause: {e.Message}");
             }
-        }
-
-
-        /// <summary>
-        /// Constructor for deserialize data from xml file
-        /// </summary>
-        public SerializedChannel(string path)
-        {
-            //DirectoryPath = Path.GetDirectoryName(path) + "\\" ?? throw new Exception($"DirectoryPath is equals to null");
-            DirectoryPath = Path.Join(path, Path.DirectorySeparatorChar.ToString()); 
-            DeserializeData();
         }
     }
 }

@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddDataCommandText" xml:space="preserve">
+    <value>AddDataCommandText</value>
+  </data>
   <data name="ConvertButtonText" xml:space="preserve">
     <value>ConvertButtonText</value>
+  </data>
+  <data name="ConvertCommandsText" xml:space="preserve">
+    <value>ConvertCommandsText</value>
   </data>
   <data name="FileDialog" xml:space="preserve">
     <value>FileDialog</value>
   </data>
+  <data name="FileDialogText" xml:space="preserve">
+    <value>FileDialogText</value>
+  </data>
+  <data name="FinalizationCommandText" xml:space="preserve">
+    <value>FinalizationCommandText</value>
+  </data>
+  <data name="get_FolderWithSignals_Exeption" xml:space="preserve">
+    <value>get_FolderWithSignals_Exeption</value>
+  </data>
   <data name="InformationAboutSignalsText" xml:space="preserve">
     <value>Information about signals:</value>
+  </data>
+  <data name="InitializationCommandText" xml:space="preserve">
+    <value>InitializationCommandText</value>
+  </data>
+  <data name="Missing_FS_instance_Exeption" xml:space="preserve">
+    <value>Missing_FS_instance</value>
+  </data>
+  <data name="process_DesiarializationFailed_Exeption" xml:space="preserve">
+    <value>process_DesiarializationFailed_Exeption</value>
+  </data>
+  <data name="ProgressOfConvertionText" xml:space="preserve">
+    <value>ProgressOfConvertionText</value>
+  </data>
+  <data name="ResetCommandText" xml:space="preserve">
+    <value>ResetCommandText</value>
   </data>
   <data name="SaveFolderPathWatermark" xml:space="preserve">
     <value>SaveFolderPathWatermark</value>

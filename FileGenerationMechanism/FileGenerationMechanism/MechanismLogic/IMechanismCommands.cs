@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataStruct;
-
-namespace FileGenerationMechanism.MechanismLogic
+﻿namespace FileGenerationMechanism.MechanismLogic
 {
     internal interface IMechanismCommands
     { 

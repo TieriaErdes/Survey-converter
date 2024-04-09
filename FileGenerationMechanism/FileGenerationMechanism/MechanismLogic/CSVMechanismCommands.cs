@@ -1,9 +1,9 @@
-﻿using FileGenerationMechanism.MechanismLogic;
+﻿using FileGenerationMechanism.MechanismRepository;
 using System.Diagnostics;
 
-namespace FileGenerationMechanism.MechanismRepository
+namespace FileGenerationMechanism.MechanismLogic
 {
-    public class CSVMechanismCommands : IMechanismCommands
+    public sealed class CSVMechanismCommands : IMechanismCommands
     {
         private const int readingInterval = 1000;
 
@@ -37,11 +37,8 @@ namespace FileGenerationMechanism.MechanismRepository
                 signalLengths[i] /= sizeof(double);
             }
 
-            if (streamWriter != null)
-                return;
-
             streamWriter = new StreamWriter[numberOfSignals];
-            for (int i = 0; (i < numberOfSignals); i++)
+            for (int i = 0; i < numberOfSignals; i++)
             {
                 string signalsDataFullPath = Path.Combine(saveFolderPath, string.Join(string.Empty, selectedChannels[i].SignalFileName!, ".csv"));
                 streamWriter[i] = File.CreateText(signalsDataFullPath);
@@ -73,8 +70,10 @@ namespace FileGenerationMechanism.MechanismRepository
                 {
 
                     streamWriter![i].WriteLine(string.Join("; ",
-                                                    $"\"{Localization.Resources.TimeText}\"",
-                                                    $"\"{Localization.Resources.ValueText}\"\n"));
+                                                    // TODO: Исправить проблему кодировок (текст на русском превращается в иероглифы)
+                                                    //$"\"{Localization.Resources.TimeText}\"",
+                                                    //$"\"{Localization.Resources.ValueText}\"\n"));
+                                                    $"\"Time\"", $"\"Value\""));
 
                     int index = 0;
                     // время отсчёта
@@ -90,7 +89,7 @@ namespace FileGenerationMechanism.MechanismRepository
                         }
                         else
                         {
-                            double[] result = SignalsReader.ReadSomeDataFromSingleFileAsync(index / readingInterval, (signalLengths[i] - index), Path.Combine(mainPath!, selectedChannels[i].SignalFileName!)).Result;
+                            double[] result = SignalsReader.ReadSomeDataFromSingleFileAsync(index / readingInterval, signalLengths[i] - index, Path.Combine(mainPath!, selectedChannels[i].SignalFileName!)).Result;
 
                             for (int j = 0; j < result.Length; j++, time++)
                                 streamWriter[i].WriteLine(string.Join("; ", time / selectedChannels[i].EffectiveFd, result[j]));
@@ -120,7 +119,7 @@ namespace FileGenerationMechanism.MechanismRepository
                 tasks[i] = WriteSignalsCharacteristicsAsync(i);
             }
 
-            for (int i = 0; (i < selectedChannels!.Length); i++)
+            for (int i = 0; i < selectedChannels!.Length; i++)
             {
                 streamWriter![i].Close();
             }
@@ -150,11 +149,13 @@ namespace FileGenerationMechanism.MechanismRepository
 
         public void Reset()
         {
-             selectedChannels = default(DataStruct.Channel[]);
-             mainPath = default(string);
-             saveFolderPath = default(string);
-             signalLengths = default(int[]);
-             numberOfSignals = default(int);
+            selectedChannels = default;
+            mainPath = default;
+            saveFolderPath = default;
+            signalLengths = default;
+            numberOfSignals = default;
+
+            streamWriter = null;
         }
     }
 }
