@@ -71,7 +71,7 @@ namespace Survey_converter.Views
             if (toEDFButton.IsChecked == true) 
                 toEDFButton.IsChecked = false;
 
-            ((MainWindowViewModel)DataContext!).ActiveConvertingFlag = ToCSV;
+            ((MainWindowViewModel)DataContext!).CurrentConvertingFlag = ToCSV;
 
             converterFormat_isSelected = true;
 
@@ -84,7 +84,7 @@ namespace Survey_converter.Views
             if (toCSVButton.IsChecked == true)
                 toCSVButton.IsChecked = false;
 
-            ((MainWindowViewModel)DataContext!).ActiveConvertingFlag = ToCSV;
+            ((MainWindowViewModel)DataContext!).CurrentConvertingFlag = ToEDF;
 
             converterFormat_isSelected = true;
 

@@ -8,6 +8,8 @@ using Survey_converter.Models;
 using Avalonia.Platform.Storage;
 using FileGenerationMechanism.MechanismLogic;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Linq;
+using DataStruct;
 
 namespace Survey_converter.ViewModels
 {
@@ -28,7 +30,17 @@ namespace Survey_converter.ViewModels
         /// <summary>
         /// Его дети хранят в себе информацию о массиве сигналов (их конфигурации)
         /// </summary>
-        private SerializedChannel? _Channels;
+        private SerializedObject<DataStruct.BOSMeth>? _Channels;
+
+        /// <summary>
+        /// Его дети хранят в себе информацию о фильтрах
+        /// </summary>
+        private SerializedObject<DataStruct.SignalParameters>? _SignalsParameters;
+
+        /// <summary>
+        /// Его дети хранят в себе подробную информацию о фильтрах
+        /// </summary>
+        private SerializedObject<DataStruct.FiltersObject>? _FilterDescription;
 
         /// <summary>
         /// Структура данных, хранящая в себе информацию о выбранных сигналах
@@ -45,14 +57,16 @@ namespace Survey_converter.ViewModels
         /// <summary>
         /// Класс библиотеки для конвертации в формат CSV
         /// </summary>
-        CSVMechanismCommands csv;
+        CSVCommands csv;
+        EDFCommands edf;
 
 
         public MainWindowViewModel()
         {
             ErrorMessages?.Clear();
 
-            csv = new CSVMechanismCommands();
+            csv = new CSVCommands();
+            edf = new EDFCommands();
         }
 
         [RelayCommand]
@@ -69,11 +83,20 @@ namespace Survey_converter.ViewModels
 
                 folderPath = folder.TryGetLocalPath();
                 // класс десериализации MethDescroption.xml. Хранит в себе же все данные о сигналах 
-                _Channels = new SerializedChannel(folderPath!)
+                _Channels = new SerializedObject<DataStruct.BOSMeth>(folderPath!, @"MethDescription.xml")
                     ?? throw new NullReferenceException(Languages.Resources.process_DesiarializationFailed_Exeption);
 
+                /// 
+                /// TODO: Локализацию для исключений при сериализации других объектов
+                ///
+                _SignalsParameters = new SerializedObject<DataStruct.SignalParameters>(folderPath!, @"SignalDescriptions.xml")
+                    ?? throw new NullReferenceException(); /// ЛОКАЛИЗОВАТЬ
+
+                _FilterDescription = new SerializedObject<DataStruct.FiltersObject>(folderPath!, @"FilterDescriptions.xml")
+                    ?? throw new NullReferenceException(); /// ЛОКАЛИЗОВАТЬ
+
                 ChannelNames = new ObservableCollection<string>();
-                foreach (var channel in _Channels.bosMeth!.Channels!)
+                foreach (var channel in _Channels.Type!.Channels!)
                 {
                     ChannelNames.Add(channel.SignalFileName!);
                 }
@@ -109,7 +132,7 @@ namespace Survey_converter.ViewModels
         {
             selectedSignals = new DataStruct.Channel[itemsCount];
 
-            foreach (var channel in _Channels!.bosMeth!.Channels)
+            foreach (var channel in _Channels!.Type!.Channels)
             {
                 for (int i = 0; i < itemsCount; i++)
                 {
@@ -121,14 +144,14 @@ namespace Survey_converter.ViewModels
 
 
         #region Convertion flags
-        public byte ActiveConvertingFlag;
+        public byte CurrentConvertingFlag;
 
         private const byte ToCSV = 0;
         private const byte ToEDF = 1;
         #endregion
 
 
-        #region Conversion commands
+        #region Conversion commands (old)
 
         [RelayCommand]
         public void Initialization_Command()
@@ -136,12 +159,13 @@ namespace Survey_converter.ViewModels
             if (selectedSignals == null || selectedSignals.Length == 0)
                 return;
 
-            if (ActiveConvertingFlag == ToCSV)
-                csv.Initialization(selectedSignals, folderPath!, SaveFolderPath,
+            if (CurrentConvertingFlag == ToCSV)
+                csv.Initialization(selectedSignals, _SignalsParameters!.Type!, _FilterDescription!.Type!, folderPath!, SaveFolderPath,
                     SignalsLengthCalculator.Calculation(folderPath!, selectedSignals));
-            else
+            else if (CurrentConvertingFlag == ToEDF)
             {
-                // Здесь будет код конвертации в EDF
+                edf.Initialization(selectedSignals, _SignalsParameters!.Type!, _FilterDescription!.Type!, folderPath!, SaveFolderPath, 
+                    SignalsLengthCalculator.Calculation(folderPath!, selectedSignals));
             }
         }
 
@@ -151,7 +175,7 @@ namespace Survey_converter.ViewModels
             if (selectedSignals == null || selectedSignals.Length == 0)
                 return;
             
-            if (ActiveConvertingFlag == ToCSV)
+            if (CurrentConvertingFlag == ToCSV)
                 csv.AddData();
         }
 
@@ -161,7 +185,7 @@ namespace Survey_converter.ViewModels
             if(selectedSignals == null || selectedSignals.Length == 0)
                 return;
 
-            if (ActiveConvertingFlag == ToCSV)
+            if (CurrentConvertingFlag == ToCSV)
                 csv.Finalization();
         }
 
@@ -171,8 +195,42 @@ namespace Survey_converter.ViewModels
             if (selectedSignals == null || selectedSignals.Length == 0)
                 return;
 
-            if (ActiveConvertingFlag == ToCSV)
+            if (CurrentConvertingFlag == ToCSV)
                 csv.Reset();
+        }
+
+        #endregion
+
+
+        #region Conversion commands (new)
+
+        public void Initialization_Command(int _a)
+        {
+            if (selectedSignals == null || selectedSignals.Length == 0)
+                return;
+
+            if (CurrentConvertingFlag == ToCSV)
+                csv.Initialization(selectedSignals, _SignalsParameters!.Type!, _FilterDescription!.Type!, folderPath!, SaveFolderPath,
+                    SignalsLengthCalculator.Calculation(folderPath!, selectedSignals));
+            else
+            {
+                // Здесь будет код конвертации в EDF
+            }
+        }
+
+        public void AddData_Command(int _a)
+        {
+            if (selectedSignals == null || selectedSignals.Length == 0)
+                return;
+
+            if (CurrentConvertingFlag == ToCSV)
+            {
+                for (int j = 0, iteration = 0; j < csv.SignalLengths!.Average(); j += CSVCommands.ReadingInterval, iteration++)
+                {
+                    //if ()
+                    csv.AddData(SignalsReader.ReadSomeDataFromFiles(j, CSVCommands.ReadingInterval, folderPath, selectedSignals).Result, iteration);
+                }
+            }
         }
 
         #endregion

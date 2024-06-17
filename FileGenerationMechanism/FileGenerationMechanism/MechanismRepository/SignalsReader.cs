@@ -21,7 +21,6 @@ namespace FileGenerationMechanism.MechanismRepository
                     using (FileStream signalFile = new FileStream(signalName, FileMode.Open))
                     {
                         //Debug.WriteLine($"{signalFile.Length} {iteration } {lengthOfInterval * sizeof(double)}");
-
                         byte[] bytes = new byte[lengthOfInterval * sizeof(double)];
                         for (int i = 0; i < iteration; i++)
                             signalFile.Read(bytes, 0, bytes.Length);
